@@ -8,8 +8,10 @@ RUN apt-get update \
      && apt update \
      && apt install -y docker-ce
 
+COPY root* /
+
 #Image clean
 RUN apt-get -yf autoremove \
-    && apt-get clean
-
-COPY root* /
+    && apt-get clean \
+    && chmod -R +x /usr/local/tomcat/bin
+    
